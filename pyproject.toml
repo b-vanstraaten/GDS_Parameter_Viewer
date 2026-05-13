@@ -1,0 +1,30 @@
+[build-system]
+requires = ["hatchling"]
+build-backend = "hatchling.build"
+
+[project]
+name = "device-design"
+version = "0.1.0"
+description = "Add your description here"
+license = { text = "GPL-3.0-or-later" }
+requires-python = ">=3.12"
+dependencies = [
+    "gdstk>=1.0.0",
+    "ipython>=9.11.0",
+    "klayout>=0.30.8",
+    "matplotlib>=3.10.8",
+    "numpy>=2.4.3",
+    "pyqt6-sip>=13.11.1",
+    "pyqtgraph>=0.14.0",
+    "pyside6>=6.11.0",
+    "qcodes>=0.58.0",
+]
+
+[tool.hatch.build.targets.wheel]
+packages = ["interactive_gds"]
+
+[project.optional-dependencies]
+qutech = [
+    "core-tools>=1.7.7",
+    "sqdl-client>=1.0.8",
+]
