@@ -9,6 +9,7 @@ description = "Add your description here"
 license = { text = "GPL-3.0-or-later" }
 requires-python = ">=3.10"
 dependencies = [
+    "core-tools>=1.7.7",
     "gdstk~=1.0",
     "ipython>=8.0",
     "klayout~=0.30.8",
@@ -18,6 +19,7 @@ dependencies = [
     "pyqtgraph~=0.14",
     "pyside6>=6.3",
     "qcodes~=0.5",
+    "sqdl-client>=1.0.8",
 ]
 
 [tool.hatch.build.targets.wheel]

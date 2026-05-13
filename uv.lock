@@ -721,6 +721,7 @@ name = "gds-parameter-viewer"
 version = "0.1.0"
 source = { editable = "." }
 dependencies = [
+    { name = "core-tools" },
     { name = "gdstk" },
     { name = "ipython", version = "8.39.0", source = { registry = "https://gitlab.tudelft.nl/api/v4/projects/7052/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "ipython", version = "9.13.0", source = { registry = "https://gitlab.tudelft.nl/api/v4/projects/7052/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
@@ -733,6 +734,7 @@ dependencies = [
     { name = "pyside6" },
     { name = "qcodes", version = "0.52.0", source = { registry = "https://gitlab.tudelft.nl/api/v4/projects/7052/packages/pypi/simple" }, marker = "python_full_version < '3.11'" },
     { name = "qcodes", version = "0.58.0", source = { registry = "https://gitlab.tudelft.nl/api/v4/projects/7052/packages/pypi/simple" }, marker = "python_full_version >= '3.11'" },
+    { name = "sqdl-client" },
 ]
 
 [package.optional-dependencies]
@@ -743,6 +745,7 @@ qutech = [
 
 [package.metadata]
 requires-dist = [
+    { name = "core-tools", specifier = ">=1.7.7" },
     { name = "core-tools", marker = "extra == 'qutech'", specifier = ">=1.7.7" },
     { name = "gdstk", specifier = "~=1.0" },
     { name = "ipython", specifier = ">=8.0" },
@@ -753,6 +756,7 @@ requires-dist = [
     { name = "pyqtgraph", specifier = "~=0.14" },
     { name = "pyside6", specifier = ">=6.3" },
     { name = "qcodes", specifier = "~=0.5" },
+    { name = "sqdl-client", specifier = ">=1.0.8" },
     { name = "sqdl-client", marker = "extra == 'qutech'", specifier = ">=1.0.8" },
 ]
 provides-extras = ["qutech"]
@@ -1735,7 +1739,7 @@ name = "pexpect"
 version = "4.9.0"
 source = { registry = "https://gitlab.tudelft.nl/api/v4/projects/7052/packages/pypi/simple" }
 dependencies = [
-    { name = "ptyprocess" },
+    { name = "ptyprocess", marker = "(python_full_version < '3.11' and sys_platform == 'emscripten') or (python_full_version < '3.11' and sys_platform == 'win32') or (sys_platform != 'emscripten' and sys_platform != 'win32')" },
 ]
 sdist = { url = "https://files.pythonhosted.org/packages/42/92/cc564bf6381ff43ce1f4d06852fc19a2f11d180f23dc32d9588bee2f149d/pexpect-4.9.0.tar.gz", hash = "sha256:ee7d41123f3c9911050ea2c2dac107568dc43b2d3b0c7557a33212c398ead30f", size = 166450, upload-time = "2023-11-25T09:07:26.339Z" }
 wheels = [

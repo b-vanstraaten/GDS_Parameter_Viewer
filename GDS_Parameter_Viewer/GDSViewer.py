@@ -37,6 +37,7 @@ class GDSViewer(QtWidgets.QMainWindow):
                  **kwargs):
         super().__init__()
         self.hw = gates
+        self.mapping = mapping
 
         self.all_gates = []
         self.layer_to_polygons = defaultdict(list)
@@ -311,6 +312,15 @@ class GDSViewer(QtWidgets.QMainWindow):
             )
 
         self.statusBar().showMessage(f"Mapped {role} to {name}. Value reloaded.")
+
+        layer = gate_obj.layer_key
+        if role == 'real':
+            self.mapping[layer]['real_gates'][gate_obj.layer_number] = name
+
+        elif role == 'virtual':
+            self.mapping[layer]['virtual_gates'][gate_obj.layer_number] = name
+
+        print(self.mapping)
 
     def get_pg_cmap(self, name):
         plt_cmap = plt.get_cmap(name)

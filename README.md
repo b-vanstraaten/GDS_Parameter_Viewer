@@ -2,6 +2,12 @@
 
 Interactive GDS viewer for quantum dot device gate layouts. Renders GDS files using PyQtGraph, maps GDS layers to QCodes `Parameter` objects, and supports real-time voltage control via scroll or manual input. Shapes on the same layer that touch are merged automatically.
 
+![GDS Parameter Viewer GUI](images/gui.png)
+
+The device shown is from:
+
+> John, V., Yu, C.X., van Straaten, B. et al. Robust and localised control of a 10-spin qubit array in germanium. *Nat Commun* **16**, 10560 (2025). https://doi.org/10.1038/s41467-025-65577-3
+
 ## Installation
 
 ```bash
