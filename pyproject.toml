@@ -10,14 +10,14 @@ license = { text = "GPL-3.0-or-later" }
 requires-python = ">=3.10"
 dependencies = [
     "gdstk~=1.0",
-#    "ipython~=9.11",
+    "ipython>=8.0",
     "klayout~=0.30.8",
-    "matplotlib~=3.10",
+    "matplotlib>=3.7",
     "numpy>=2.0",
-    "pyqt6-sip~=13.11",
+    "pyqt6-sip>=13.4",
     "pyqtgraph~=0.14",
-    "pyside6~=6.11",
-    "qcodes~=0.58",
+    "pyside6>=6.3",
+    "qcodes~=0.5",
 ]
 
 [tool.hatch.build.targets.wheel]
