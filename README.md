@@ -1,4 +1,4 @@
-# interactive_gds
+# GDS Parameter Viewer
 
 Interactive GDS viewer for quantum dot device gate layouts. Renders GDS files using PyQtGraph, maps GDS layers to QCodes `Parameter` objects, and supports real-time voltage control via scroll or manual input. Shapes on the same layer that touch are merged automatically.
 
@@ -11,7 +11,7 @@ pip install git+https://github.com/b-vanstraaten/gds_viewer.py.git
 With optional QuTech dependencies (core-tools, sqdl-client):
 
 ```bash
-pip install "device-design[qutech] @ git+https://github.com/b-vanstraaten/gds_viewer.py.git"
+pip install "GDS-Parameter-Viewer[qutech] @ git+https://github.com/b-vanstraaten/gds_viewer.py.git"
 ```
 
 ## Quick start
@@ -19,9 +19,10 @@ pip install "device-design[qutech] @ git+https://github.com/b-vanstraaten/gds_vi
 ```python
 from pathlib import Path
 from qcodes import Parameter
-from interactive_gds.GDSViewer import GDSViewer
+from GDS_Parameter_Viewer.GDSViewer import GDSViewer
 
 GDS_PATH = Path("example_gds/simple_device.gds")
+
 
 class Gates:
     # Physical gates
@@ -32,6 +33,7 @@ class Gates:
     vP1: Parameter = make_gate("vP1")
     vP2: Parameter = make_gate("vP2")
     vB12: Parameter = make_gate("vB12")
+
 
 mapping = {
     "barriers": {

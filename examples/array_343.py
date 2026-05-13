@@ -4,7 +4,7 @@ Date: 13/05/2026
 """
 
 from pathlib import Path
-from interactive_gds.GDSViewer import GDSViewer
+from GDS_Parameter_Viewer.GDSViewer import GDSViewer
 from _functions import make_gates_class_from_dataset
 from core_tools.data.sqdl import init_sqdl, load_by_uuid
 

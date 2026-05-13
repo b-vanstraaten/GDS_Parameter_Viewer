@@ -3,7 +3,7 @@ requires = ["hatchling"]
 build-backend = "hatchling.build"
 
 [project]
-name = "device-design"
+name = "GDS-Parameter-Viewer"
 version = "0.1.0"
 description = "Add your description here"
 license = { text = "GPL-3.0-or-later" }
@@ -21,7 +21,7 @@ dependencies = [
 ]
 
 [tool.hatch.build.targets.wheel]
-packages = ["interactive_gds"]
+packages = ["GDS_Parameter_Viewer"]
 
 [project.optional-dependencies]
 qutech = [

@@ -13,8 +13,8 @@ import pyqtgraph as pg
 from IPython import get_ipython
 from pyqtgraph.Qt import QtWidgets, QtCore
 
-from interactive_gds.Gate import MergedGate
-from interactive_gds.GateWindow import GateWindow
+from GDS_Parameter_Viewer.Gate import MergedGate
+from GDS_Parameter_Viewer.GateWindow import GateWindow
 
 # === Configuration ===
 VOLTAGE_MIN_MAX = (-4000.0, 4000.0)
