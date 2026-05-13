@@ -5,7 +5,6 @@ Date: 13/05/2026
 
 from pathlib import Path
 
-import numpy as np
 from qcodes import Parameter
 
 from GDS_Parameter_Viewer.GDSViewer import GDSViewer

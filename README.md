@@ -5,13 +5,13 @@ Interactive GDS viewer for quantum dot device gate layouts. Renders GDS files us
 ## Installation
 
 ```bash
-pip install git+https://github.com/b-vanstraaten/gds_viewer.py.git
+pip install git+https://github.com/b-vanstraaten/GDS_Parameter_Viewer.git
 ```
 
 With optional QuTech dependencies (core-tools, sqdl-client):
 
 ```bash
-pip install "GDS-Parameter-Viewer[qutech] @ git+https://github.com/b-vanstraaten/gds_viewer.py.git"
+pip install "GDS-Parameter-Viewer[qutech] @ git+https://github.com/b-vanstraaten/GDS_Parameter_Viewer.git"
 ```
 
 ## Quick start
