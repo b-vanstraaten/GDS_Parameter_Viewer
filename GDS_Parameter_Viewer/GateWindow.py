@@ -32,8 +32,8 @@ class GateWindow(QtWidgets.QWidget):
             self.edits[role]['name'].returnPressed.connect(
                 lambda r=role: self.mapping_changed.emit(r, self.edits[r]['name'].text())
             )
-            self.edits[role]['val'].valueChanged.connect(
-                lambda v, r=role: self.val_changed.emit(r, v)
+            self.edits[role]['val'].lineEdit().returnPressed.connect(
+                lambda r=role: self.val_changed.emit(r, self.edits[r]['val'].value())
             )
 
         layout.addRow(QtWidgets.QLabel(f"<b>ID: {self.gate_id}</b>"))
