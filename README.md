@@ -1,8 +1,24 @@
 # GDS Parameter Viewer
 
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![Python](https://img.shields.io/badge/python-%3E%3D3.10-blue)](https://www.python.org/)
+![Platform](https://img.shields.io/badge/platform-windows%20%7C%20macOS%20%7C%20linux-lightgrey)
+
 Interactive GDS viewer for quantum dot device gate layouts. Renders GDS files using PyQtGraph, maps GDS layers to QCodes `Parameter` objects, and supports real-time voltage control via scroll or manual input. Shapes on the same layer that touch are merged automatically.
 
 ![GDS Parameter Viewer GUI](images/gui.png)
+
+## Features
+
+- **GDS rendering** — loads and renders GDS files with per-layer colour coding using a matplotlib colormap
+- **QCodes integration** — maps GDS shapes to real and virtual `Parameter` objects; gate colours reflect live voltage values
+- **Hardware polling** — reads gate voltages from hardware at 200ms intervals (5 Hz) and updates colours in real time
+- **Scroll to set** — hover over a gate and use Ctrl+Scroll to increment/decrement its voltage in 1 mV steps
+- **Click to edit** — click any gate to open a dedicated editor window for manual voltage entry and parameter remapping
+- **Layer toggling** — show/hide individual layers via checkboxes in the sidebar; drag to reorder z-order
+- **Color range control** — manually set voltage min/max for the colormap, or use Auto-Scale to fit current values
+- **Shape merging** — touching polygons on the same GDS layer are automatically merged into a single gate shape
+- **IPython/PyCharm support** — detects interactive shells and configures the Qt event loop automatically
 
 The device shown is from:
 
@@ -19,6 +35,8 @@ With optional QuTech dependencies (core-tools, sqdl-client):
 ```bash
 pip install "GDS-Parameter-Viewer[qutech] @ git+https://github.com/b-vanstraaten/GDS_Parameter_Viewer.git"
 ```
+
+> **Linux:** requires a display server (X11 or Wayland). On headless systems set `DISPLAY=:0` or use a virtual framebuffer (`Xvfb`).
 
 ## Quick start
 
@@ -61,6 +79,16 @@ viewer = GDSViewer(GDS_PATH, gates=gates, mapping=mapping)
 gates.B12(-500)
 ```
 
+## Keyboard shortcuts
+
+| Action | Shortcut |
+|--------|----------|
+| Adjust gate voltage | Hover over gate + `Ctrl+Scroll` |
+| Open gate editor | Click gate |
+| Pan view | Click and drag |
+| Zoom | Scroll |
+| Reset view | Double-click background |
+
 ## Mapping structure
 
 The `mapping` dict groups GDS layers into named gate groups:
@@ -80,6 +108,10 @@ mapping = {
 - **`virtual_gates`** — same, but for virtual gate parameters.
 
 Shape indices are assigned in the order shapes appear after merging, starting at 0.
+
+## Author
+
+Barnaby van Straaten (QuTech, Delft University of Technology)
 
 ## License
 
