@@ -320,8 +320,6 @@ class GDSViewer(QtWidgets.QMainWindow):
         elif role == 'virtual':
             self.mapping[layer]['virtual_gates'][gate_obj.layer_number] = name
 
-        print(self.mapping)
-
     def get_pg_cmap(self, name):
         plt_cmap = plt.get_cmap(name)
         pos = np.linspace(0, 1, 256)
