@@ -62,6 +62,7 @@ make_gds(GDS_PATH)
 gates = Gates()
 
 viewer = GDSViewer(GDS_PATH, gates=gates, mapping=mapping)
+viewer = GDSViewer(GDS_PATH, gates=gates, mapping=mapping)
 
 # Example: drive barrier gate to its minimum voltage
 gates.B12(-500)

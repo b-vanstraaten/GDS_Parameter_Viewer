@@ -32,8 +32,14 @@ class GateWindow(QtWidgets.QWidget):
             self.edits[role]['name'].returnPressed.connect(
                 lambda r=role: self.mapping_changed.emit(r, self.edits[r]['name'].text())
             )
-            self.edits[role]['val'].valueChanged.connect(
-                lambda val, r=role: self.val_changed.emit(r, val)
+            sb = self.edits[role]['val']
+            sb._typing = False
+            sb.lineEdit().textEdited.connect(lambda _, s=sb: setattr(s, '_typing', True))
+            sb.lineEdit().returnPressed.connect(
+                lambda r=role, s=sb: (setattr(s, '_typing', False), self.val_changed.emit(r, s.value()))
+            )
+            sb.valueChanged.connect(
+                lambda val, r=role, s=sb: self.val_changed.emit(r, val) if not s._typing else None
             )
 
         layout.addRow(QtWidgets.QLabel(f"<b>ID: {self.gate_id}</b>"))
