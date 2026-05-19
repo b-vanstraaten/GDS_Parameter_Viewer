@@ -16,6 +16,8 @@ from pyqtgraph.Qt import QtWidgets, QtCore
 from GDS_Parameter_Viewer.Gate import MergedGate
 from GDS_Parameter_Viewer.GateWindow import GateWindow
 
+import json
+
 # === Configuration ===
 VOLTAGE_MIN_MAX = (-4000.0, 4000.0)
 VOLTAGE_STEP = 1.0  # mV per scroll notch
@@ -33,11 +35,18 @@ def extract(mapping, key):
 
 
 class GDSViewer(QtWidgets.QMainWindow):
-    def __init__(self, gds_path, gates=None, mapping = None,
+    def __init__(self, gds_path, gates=None, mapping: dict | str | None = None,
                  **kwargs):
         super().__init__()
         self.hw = gates
-        self.mapping = mapping
+
+        match mapping:
+            case str():
+                self.load_mappings_from_json(mapping)
+            case dict():
+                self.mapping = mapping
+            case _:
+                raise ValueError(f"Invalid mapping type. Expected str or dict, instead got:{mapping}")
 
         self.all_gates = []
         self.layer_to_polygons = defaultdict(list)
@@ -380,3 +389,10 @@ class GDSViewer(QtWidgets.QMainWindow):
                 virtual_gates[layer_key][layer_number] = virtual_gate_name
 
         return real_gates, virtual_gates
+
+
+    def save_mappings_to_json(self, path):
+        json.dump(self.mapping, open(path, 'w'), indent=2)
+
+    def load_mappings_from_json(self, path):
+        self.mapping = json.load(open(path))
